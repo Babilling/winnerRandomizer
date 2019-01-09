@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>jQuery add / remove textbox example</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="index.css">
+		<script src="/scripts/anime.min.js"></script>
+		<script src="/scripts/jquery.min.js"></script>
+		<style type="text/css">
+			div{
+				padding:8px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+	<h1>jQuery add / remove textbox example</h1>
+
+	<script type="text/javascript">
+
+    $(document).ready(function(){
+
+		var counter = 3;
+        $('#resetButton').hide();
+
+		$("#addButton").click(function () {
+			if(counter>10){
+					alert("Only 10 textboxes allow");
+					return false;
+			}
+			var newPlayerDiv = $(document.createElement('div')).attr("id", 'PlayerDiv' + counter);
+            newPlayerDiv.after().html('<label>Player #'+ counter + ' </label>' +
+				  '<input type="text" name="player' + counter +
+				  '" id="player' + counter + '" value="" >');
+            newPlayerDiv.appendTo("#PlayersEntriesGroup");
+			counter++;
+		 });
+
+		 $("#removeButton").click(function () {
+			 if(counter==2){
+				  alert("No more textbox to remove");
+				  return false;
+			 }
+			counter--;
+			$("#TextBoxDiv" + counter).remove();
+		 });
+
+		 $("#getButtonValue").click(function () {
+                $('.button').hide();
+                $('#PlayersEntriesGroup').hide();
+             	$('#resetButton').show();
+				for(i=1; i<counter; i++){
+                    $('<div/>', {
+                        text : $('#player' + i).val(),
+						class: 'player',
+						id: 'player' + i
+                    }).appendTo('#players');
+				}
+                 anime({
+                     targets: '.player',
+                     translateX: 500,
+                     delay: 1000,
+                     easing: 'easeInOutSine',
+                     duration: function(el, i, l) {
+                         return 5000 + (1 + (Math.floor(Math.random() * (1000 - 200) + 200)));
+                     }
+                 });
+
+             });
+
+        $("#resetButton").click(function () {
+            location.reload();
+        });
+	  });
+
+	</script>
+		<div id='PlayersEntriesGroup'>
+			<div id="PlayerDiv1">
+				<label>Player #1  </label><input type='textbox' id='player1' >
+			</div>
+			<div id="PlayerDiv2">
+				<label>Player #2  </label><input type='textbox' id='player2' >
+			</div>
+		</div>
+	<div id='players'></div>
+		<input type='button' value='Add Entry' id='addButton' class='button'>
+		<input type='button' value='Remove Entry' id='removeButton' class='button'>
+		<input type='button' value='Get TextBox Value' id='getButtonValue' class='button'>
+		<input type='button' value='Reset' id='resetButton' class='resetButton'>
+
+	</body>
+
+</html>

@@ -1,0 +1,33 @@
+{
+  "name": "winnerRandomizer",
+  "version": "0.1.0",
+  "description": "I wanted to use Anime.js to create a fun and useless randomizer",
+  "homepage": "https://github.com/Babilling/winnerRandomizer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Babilling/winnerRandomizer"
+  },
+  "bugs": {
+    "url": "https://github.com/Babilling/winnerRandomizer/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT License",
+      "url": "https://github.com/Babilling/winnerRandomizer/blob/master/LICENSE"
+    }
+  ],
+  "author": {
+    "name": "Babilling",
+    "email": "babilling@gmail.com"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {
+    "animejs": "^3.0.0",
+    "express": "^4.15.2",
+    "jquery": "^3.3.1",
+    "jsdom": "^13.1.0",
+    "random-float": "^1.0.0"
+  }
+}
