@@ -53,25 +53,48 @@
                 $('#PlayersEntriesGroup').hide();
              	$('#resetButton').show();
 				for(i=1; i<=counter; i++){
-					if($('#player' + i).val()) {
+					//if($('#player' + i).val()) {
 						$('<div/>', {
 							text : $('#player' + i).val(),
 							class: 'player',
 							id: 'player' + i
 						}).appendTo('#players');
-					}       
+					//}       
 				}
+				var speed = 1000;
+				var tranlate = 100;
+				var pixels = 0;
+				var loops = 0;
+				
                  anime({
                      targets: '.player',
-                     translateX: 500,
-                     delay: 1000,
+                     translateX: tranlate,
+                     delay: 0,
                      easing: 'easeInOutSine',
-                     duration: function(target, index, targetCount) {
-						 return (uniques.splice( 0, 1 )[0]) * 100;
-                     }
+                     //duration: function(target, index, targetCount) {
+						 //return (uniques.splice( 0, 1 )[0]) * 100;
+                     //}
+					 duration: speed,
+					  complete: function(anim) {
+					   tranlate += 100;
+						myCallback(tranlate);
+					  }
                  });
-
-             });
+				 var myCallback = function(translateX) {
+					anime({
+						 targets: '.player',
+						 translateX: translateX,
+						 delay: 0,
+						 easing: 'easeInOutSine',
+						 //duration: function(target, index, targetCount) {
+							 //return (uniques.splice( 0, 1 )[0]) * 100;
+						 //}
+						 duration: speed,
+						  complete: function(anim) {
+							loops++;
+					  }
+                 });
+             };
 
         $("#resetButton").click(function () {
             location.reload();
