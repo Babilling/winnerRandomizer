@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "animejs": "^3.0.0",
+    "chance": "^1.0.18",
     "express": "^4.15.2",
     "jquery": "^3.3.1",
     "jsdom": "^13.1.0",
